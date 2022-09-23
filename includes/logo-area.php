@@ -6,7 +6,9 @@ $trendyol = get_field('trendyol',$post->ID);
 $n11 = get_field('n11',$post->ID);
 ?>
 <div class="logos">
-  <span class="uyari">Ürünümüzü aşağıdaki satış kanalları üzerinden satın alabilirsiniz.</span>
+  <?php if (!empty($eticaret) || !empty($hepsiburada) || !empty($trendyol) || !empty($n11)): ?>
+    <span class="uyari">Ürünümüzü aşağıdaki satış kanalları üzerinden satın alabilirsiniz.</span>
+  <?php endif; ?>
   <ul class="logoContainer">
     <?php if (!empty($eticaret)): ?>
       <li>
