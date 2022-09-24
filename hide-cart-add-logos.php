@@ -59,3 +59,18 @@ function add_logos( $post_excerpt )   {
 };
 // add the filter
 add_filter( 'woocommerce_short_description','add_logos',10, 1 );
+
+
+add_action( 'woocommerce_after_shop_loop_item', 'remove_add_to_cart_buttons', 1 );
+
+function remove_add_to_cart_buttons() {
+  if( is_product_category() || is_shop()) {
+    remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart');
+  }
+}
+
+function add_eticaret_incele() {
+  include(PLUGIN_PATH . '/includes/eticaret-ve-incele.php');
+}
+
+add_action('woocommerce_after_shop_loop_item', 'add_eticaret_incele');

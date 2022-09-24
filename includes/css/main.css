@@ -11,3 +11,8 @@
   display: inline-block;
   max-height: 35px;
 }
+
+.logos-archive a {
+  font-size: 16px;
+  margin-right: 2px;
+}
