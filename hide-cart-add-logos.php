@@ -24,8 +24,8 @@ if ( ! defined( 'PREFIX_HIDECARTLOGO_PLUGIN' ) )		define( 'PREFIX_HIDECARTLOGO_P
 if ( ! defined( 'PREFIX_HIDECARTLOGO_PLUGIN_DIR' ) )	define( 'PREFIX_HIDECARTLOGO_PLUGIN_DIR'	, plugin_dir_path( __FILE__ ) ); // Plugin directory absolute path with the trailing slash. Useful for using with includes eg - /var/www/html/wp-content/plugins/starter-plugin/
 if ( ! defined( 'PREFIX_HIDECARTLOGO_PLUGIN_URL' ) )	define( 'PREFIX_HIDECARTLOGO_PLUGIN_URL'	, plugin_dir_url( __FILE__ ) ); // URL to the plugin folder with the trailing slash. Useful for referencing src eg - http://localhost/wp/wp-content/plugins/starter-plugin/
 
-define( 'MY_ACF_PATH', PREFIX_HIDECARTLOGO_PLUGIN_URL . 'includes/acf-pro/' );
-define( 'MY_ACF_URL', PREFIX_HIDECARTLOGO_PLUGIN_URL . 'includes/acf-pro/' );
+define( 'MY_ACF_PATH', PREFIX_HIDECARTLOGO_PLUGIN_DIR . 'includes/acf-pro/' );
+define( 'MY_ACF_URL', PREFIX_HIDECARTLOGO_PLUGIN_DIR . 'includes/acf-pro/' );
 
 // Include the ACF plugin.
 include_once( MY_ACF_PATH . 'acf.php' );
@@ -36,17 +36,17 @@ function my_acf_settings_url( $url ) {
     return MY_ACF_URL;
 }
 
-include_once(PREFIX_HIDECARTLOGO_PLUGIN_URL . 'includes/custom-fields.php');
+include_once(PREFIX_HIDECARTLOGO_PLUGIN_DIR . 'includes/custom-fields.php');
 
 function add_style() {
-	wp_enqueue_style( 'hide-cart-add-logos-style', get_home_url() . '/wp-content/plugins/hide-cart-add-logos/includes/css/main.css' );
+	wp_enqueue_style( 'hide-cart-add-logos-style', PREFIX_HIDECARTLOGO_PLUGIN_URL . 'includes/css/main.css' );
 }
 add_action( 'wp_enqueue_scripts', 'add_style' );
 
-add_filter('acf/settings/show_admin', 'my_acf_settings_show_admin');
-function my_acf_settings_show_admin( $show_admin ) {
+//add_filter('acf/settings/show_admin', 'my_acf_settings_show_admin');
+/*function my_acf_settings_show_admin( $show_admin ) {
     return false;
-}
+}*/
 
 add_action( 'wp', 'rudr_remove_add_to_cart_single_product' );
 
@@ -58,7 +58,7 @@ function rudr_remove_add_to_cart_single_product(){
 
 function add_logos( $post_excerpt )   {
     echo $post_excerpt;
-    include(PLUGIN_PATH . '/includes/logo-area.php');
+    include(PREFIX_HIDECARTLOGO_PLUGIN_DIR . 'includes/logo-area.php');
 };
 // add the filter
 add_filter( 'woocommerce_short_description','add_logos',10, 1 );
@@ -73,7 +73,7 @@ function remove_add_to_cart_buttons() {
 }
 
 function add_eticaret_incele() {
-  include(PLUGIN_PATH . '/includes/eticaret-ve-incele.php');
+  include(PREFIX_HIDECARTLOGO_PLUGIN_DIR . 'includes/eticaret-ve-incele.php');
 }
 
 add_action('woocommerce_after_shop_loop_item', 'add_eticaret_incele');

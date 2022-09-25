@@ -1,10 +1,12 @@
 .logoContainer ul {
   display: inline-block;
   padding-inline-start: 0px !important;
+  margin-top:50px !important;
 }
 
 .logoContainer li {
   display: inline-block;
+  margin-left:0px !important;
 }
 
 .logoContainer li img {
@@ -15,4 +17,17 @@
 .logos-archive a {
   font-size: 16px;
   margin-right: 2px;
+}
+
+span.uyari {
+	    display: block;
+    padding-bottom: 25px;
+}
+
+.add-to-cart-button {
+display:none;
+}
+
+.logos-archive {
+    text-align: center !important;
 }
