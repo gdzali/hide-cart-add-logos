@@ -36,7 +36,7 @@ function my_acf_settings_url( $url ) {
     return MY_ACF_URL;
 }
 
-include_once(PLUGIN_PATH . 'includes/custom-fields.php');
+include_once(PREFIX_HIDECARTLOGO_PLUGIN_URL . 'includes/custom-fields.php');
 
 function add_style() {
 	wp_enqueue_style( 'hide-cart-add-logos-style', get_home_url() . '/wp-content/plugins/hide-cart-add-logos/includes/css/main.css' );
