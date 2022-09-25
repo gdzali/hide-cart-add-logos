@@ -19,10 +19,13 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'PLUGIN_PATH', $_SERVER['DOCUMENT_ROOT'] . '/wp-content/plugins/hide-cart-add-logos/' );
+if ( ! defined( 'PREFIX_VERSION_NUM' ) ) 		define( 'PREFIX_VERSION_NUM'		, '1.0' ); // Plugin version constant
+if ( ! defined( 'PREFIX_HIDECARTLOGO_PLUGIN' ) )		define( 'PREFIX_HIDECARTLOGO_PLUGIN'		, trim( dirname( plugin_basename( __FILE__ ) ), '/' ) ); // Name of the plugin folder eg - 'starter-plugin'
+if ( ! defined( 'PREFIX_HIDECARTLOGO_PLUGIN_DIR' ) )	define( 'PREFIX_HIDECARTLOGO_PLUGIN_DIR'	, plugin_dir_path( __FILE__ ) ); // Plugin directory absolute path with the trailing slash. Useful for using with includes eg - /var/www/html/wp-content/plugins/starter-plugin/
+if ( ! defined( 'PREFIX_HIDECARTLOGO_PLUGIN_URL' ) )	define( 'PREFIX_HIDECARTLOGO_PLUGIN_URL'	, plugin_dir_url( __FILE__ ) ); // URL to the plugin folder with the trailing slash. Useful for referencing src eg - http://localhost/wp/wp-content/plugins/starter-plugin/
 
-define( 'MY_ACF_PATH', PLUGIN_PATH . 'includes/acf-pro/' );
-define( 'MY_ACF_URL', PLUGIN_PATH . 'includes/acf-pro/' );
+define( 'MY_ACF_PATH', PREFIX_HIDECARTLOGO_PLUGIN_URL . 'includes/acf-pro/' );
+define( 'MY_ACF_URL', PREFIX_HIDECARTLOGO_PLUGIN_URL . 'includes/acf-pro/' );
 
 // Include the ACF plugin.
 include_once( MY_ACF_PATH . 'acf.php' );
